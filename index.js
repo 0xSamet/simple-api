@@ -20,15 +20,11 @@ app.get('/', (req,res) => {
 });
 
 app.get('/posts',(req,res) => {
-  res.json({
-    name: "posts",
-    asd: "hello"
-  })
-  /*if(req.query.category){
+  if(req.query.category){
     Post.find({category: req.query.category}).then((data) => res.json(data));
   }else{
     Post.find({}).then((data) => res.json(data));
-  }*/
+  }
 });
 
 app.get('/categories',(req,res) => {
