@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const Post = require('./models/Post');
 const Category = require('./models/Category');
+
 const app = express();
 
 app.use(cors());
@@ -19,11 +20,15 @@ app.get('/', (req,res) => {
 });
 
 app.get('/posts',(req,res) => {
-  if(req.query.category){
+  res.json({
+    name: "posts",
+    asd: "hello"
+  })
+  /*if(req.query.category){
     Post.find({category: req.query.category}).then((data) => res.json(data));
   }else{
     Post.find({}).then((data) => res.json(data));
-  }
+  }*/
 });
 
 app.get('/categories',(req,res) => {
