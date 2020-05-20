@@ -4,9 +4,10 @@ const cors = require('cors');
 const Post = require('./models/Post');
 const Category = require('./models/Category');
 const app = express();
+
 app.use(cors());
 
-mongoose.connect(process.env.DB_URL, {useNewUrlParser: true, useUnifiedTopology: true,useCreateIndex: true}, (err) => {
+mongoose.connect(process.env.DB_URI, {useNewUrlParser: true, useUnifiedTopology: true,useCreateIndex: true}, (err) => {
   if(err)
     console.log(err);
 });
@@ -58,4 +59,4 @@ app.post('/addcategory',(req,res) => {
 
 });
 
-app.listen(3000, () => console.log("listening on 3000"));
+app.listen(process.env.PORT || 3000);
