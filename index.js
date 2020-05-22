@@ -9,8 +9,10 @@ const app = express();
 app.use(cors());
 
 mongoose.connect(process.env.DB_URI || "mongodb://localhost/my-blog", {useNewUrlParser: true, useUnifiedTopology: true,useCreateIndex: true}, (err) => {
-  if(err)
+  if(err){
     console.log(err);
+  }
+  console.log("connected");
 });
 
 app.get('/', (req,res) => {
