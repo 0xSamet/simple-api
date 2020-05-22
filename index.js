@@ -8,7 +8,7 @@ const app = express();
 
 app.use(cors());
 
-mongoose.connect(process.env.DB_URI, {useNewUrlParser: true, useUnifiedTopology: true,useCreateIndex: true}, (err) => {
+mongoose.connect(process.env.DB_URI || "mongodb://localhost/kitten_db", {useNewUrlParser: true, useUnifiedTopology: true,useCreateIndex: true}, (err) => {
   if(err)
     console.log(err);
 });
