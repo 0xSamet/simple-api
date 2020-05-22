@@ -15,7 +15,8 @@ mongoose.connect(process.env.DB_URI || "mongodb://localhost/my-blog", {useNewUrl
 
 app.get('/', (req,res) => {
   res.json({
-    name: "asd"
+    name: process.env.DB_URI,
+    name2: process.env
   })
 });
 
