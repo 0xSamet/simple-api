@@ -16,10 +16,7 @@ mongoose.connect(process.env.DB_URI || "mongodb://localhost/my-blog", {useNewUrl
 });
 
 app.get('/', (req,res) => {
-  res.json({
-    name: process.env.DB_URI,
-    name2: process.env
-  })
+  res.send("Welcome");
 });
 
 app.get('/posts',(req,res) => {
@@ -43,13 +40,16 @@ app.get('/posts/:postId',(req,res) => {
   })
 });
 
-app.delete('/deletepost/:postId',(req,res) => {
+app.delete('/posts',(req,res) => {
   const postId = req.params.postId;
   Post.findByIdAndRemove(postId).then(res.send("deleted"));
 });
 
-app.post('/addpost',(req,res) => {
-  Post.create({
+app.post('/posts',(req,res) => {
+
+  Post.create(req.body).then(data => res.json(data));
+  
+  /*{
     title: "Altıncı Blog Yazısı",
     content: "Altıncı Blog Yazısı İçeriği Altıncı Blog Yazısı İçeriği",
     author: "Samet Atasever",
@@ -57,10 +57,10 @@ app.post('/addpost',(req,res) => {
     slug: "besinci-blog-yazisi",
     image: "https://cdn.pixabay.com/photo/2020/04/07/17/01/chicks-5014152_960_720.jpg",
     date: undefined
-  }).then(data => res.json(data));
+  }*/
 });
 
-app.post('/addcategory',(req,res) => {
+app.post('/categories',(req,res) => {
   Category.create({name: "Tüm Kategoriler"}).then(data => { res.json(data)})
 
 });
