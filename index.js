@@ -1,8 +1,8 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
-const Post = require('./models/Post');
-const Category = require('./models/Category');
+const Post = require('./models/Post')(mongoose);
+const Category = require('./models/Category')(mongoose);
 
 const app = express();
 
